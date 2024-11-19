@@ -3,10 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+  <title>Signify - Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #202d3f, #4a6572);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #34c759; /* Green for emphasis */
+    }
+
+    p.slogan {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      color: #b0bec5;
+    }
+
+    p.description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #cfd8dc;
+    }
+
+    .subscribe {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #34c759;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #28a745;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #b0bec5;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to My GitHub Page!</h1>
-  <p>This is a simple page hosted on GitHub Pages.</p>
+  <div class="container">
+    <h1>Signify</h1>
+    <p class="slogan">Ensuring no one is left behind</p>
+    <p class="description">
+      Signify is an innovative AI-powered platform that enables seamless communication for speech and hearing-impaired individuals 
+      through advanced sign language recognition and translation technology. By leveraging artificial intelligence, machine learning, 
+      and virtual reality, our software transforms how impaired individuals interact in educational, professional, and social environments.
+    </p>
+    <div class="subscribe">
+      <input type="email" placeholder="Enter your email to stay updated" />
+      <button>Notify Me</button>
+    </div>
+    <footer>
+      &copy; 2024 Signify. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
