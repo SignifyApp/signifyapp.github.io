@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #202d3f, #4a6572);
+      background: #304057; /* Solid background color */
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -23,17 +23,20 @@
       padding: 20px;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #34c759; /* Green for emphasis */
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 150px;
+      height: auto;
     }
 
     p.slogan {
-      font-size: 1.5rem;
-      font-weight: 300;
+      font-size: 1rem;
+      font-weight: bolder;
       margin-bottom: 20px;
-      color: #b0bec5;
+      color: #dfe6ed;
     }
 
     p.description {
@@ -56,6 +59,8 @@
       font-size: 1rem;
       border: none;
       border-radius: 5px;
+      background-color: #f5f5f5;
+      color: #304057;
     }
 
     button {
@@ -82,7 +87,9 @@
 </head>
 <body>
   <div class="container">
-    <h1>Signify</h1>
+    <div class="logo">
+      <img src="logo.png" alt="Signify Logo" />
+    </div>
     <p class="slogan">Ensuring no one is left behind</p>
     <p class="description">
       Signify is an innovative AI-powered platform that enables seamless communication for speech and hearing-impaired individuals 
@@ -90,8 +97,7 @@
       and virtual reality, our software transforms how impaired individuals interact in educational, professional, and social environments.
     </p>
     <div class="subscribe">
-      <input type="email" placeholder="Enter your email to stay updated" />
-      <button>Notify Me</button>
+      <h1>Coming Soon.!</h1>
     </div>
     <footer>
       &copy; 2024 Signify. All rights reserved.
