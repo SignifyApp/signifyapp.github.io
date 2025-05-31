@@ -1,107 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signify - Coming Soon</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #304057; /* Solid background color */
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 800px;
-      padding: 20px;
-    }
-
-    .logo {
-      margin-bottom: 20px;
-    }
-
-    .logo img {
-      max-width: 150px;
-      height: auto;
-    }
-
-    p.slogan {
-      font-size: 1rem;
-      font-weight: bolder;
-      margin-bottom: 20px;
-      color: #dfe6ed;
-    }
-
-    p.description {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      color: #cfd8dc;
-    }
-
-    .subscribe {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input[type="email"] {
-      width: 100%;
-      max-width: 400px;
-      padding: 10px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #f5f5f5;
-      color: #304057;
-    }
-
-    button {
-      background-color: #34c759;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #28a745;
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #b0bec5;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signify - AI Powered</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="scrollreveal.min.js"></script>
 </head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="logo.png" alt="Signify Logo" />
+<body class="is-boxed has-animations lights-off">
+    <div class="body-wrap boxed-container">
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h2 class="pb-20">
+                                <a href="#">
+                                    <img class="header-logo-image asset-light" src="logo-light.png" alt="Logo">
+                                    <img class="header-logo-image asset-dark" src="logo-dark.png" alt="Logo">
+                                </a>
+                            </h2>
+                            <h1 class="hero-title mt-0" id="hero-title">AI-Powered Virtual Classroom</h1>
+                            <p class="hero-paragraph" id="hero-paragraph">Empower inclusive learning with real-time AI interaction, gesture recognition, and speech assistance.</p>
+                            <div>
+                                <a class="button button-primary" href="test.html" id="start-translation">Start Session</a>
+                            </div>
+                            <p>&nbsp;</p>
+                        </div>
+                        
+                        <div class="hero-media pt-50" id="hero-media">
+                            <div class="header-illustration">
+                                <img class="header-illustration-image asset-light" src="header-illustration-light.svg" alt="Header illustration">
+                                <img class="header-illustration-image asset-dark" src="header-illustration-dark.svg" id="header-illustration-image" alt="Header illustration">
+                            </div>
+                            <div class="hero-media-illustration">
+                                <img class="hero-media-illustration-image asset-light" src="hero-media-illustration-light.svg" alt="Hero media illustration">
+                                <img class="hero-media-illustration-image asset-dark" src="hero-media-illustration-dark.svg" id="hero-media-illustration-image" alt="Hero media illustration">
+                            </div>
+                            <div class="hero-media-container">
+                                <img class="hero-media-image asset-light" src="hero-media-light.svg" alt="Hero media">
+                                <img class="hero-media-image asset-dark" id="hero-media-image" src="hero-media-dark.svg" alt="Hero media" style="width: 530px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-    <p class="slogan">Ensuring no one is left behind</p>
-    <p class="description">
-      Signify is an innovative AI-powered platform that enables seamless communication for speech and hearing-impaired individuals 
-      through advanced sign language recognition and translation technology. By leveraging artificial intelligence, machine learning, 
-      and virtual reality, our software transforms how impaired individuals interact in educational, professional, and social environments.
-    </p>
-    <div class="subscribe">
-      <h1>Coming Soon.!</h1>
-    </div>
-    <footer>
-      &copy; 2024 Signify. All rights reserved.
-    </footer>
-  </div>
+
+    <script src="main.min.js"></script>
+    <script>
+        window.addEventListener("load", function() {
+            const heroTitle = document.getElementById("hero-title");
+            const heroParagraph = document.getElementById("hero-paragraph");
+            const heroMediaImage = document.getElementById("hero-media-image");
+            const heroMediaIllustrationImage = document.getElementById("hero-media-illustration-image");
+            const headerIllustrationImage = document.getElementById("header-illustration-image");
+
+            const titles = ["AI-Powered Virtual Classroom", "Sign Language Translation", "Speech Assistant", "Auto Text Reader"];
+            const paragraphs = [
+                "Empower inclusive learning with real-time AI interaction, gesture recognition, and speech assistance.",
+                "Experience seamless communication with our real-time AI Sign Language Translation service.",
+                "Instantly convert spoken words into text with our advanced Speech-to-Text Translation.",
+                "Turn text into natural speech effortlessly with our Text-to-Speech Translation."
+            ];
+            const images = ["sliderr0.jpg", "sliderr1.jpg", "sliderr2.jpg", "sliderr3.jpg"];
+            let currentIndex = 0;
+
+            function updateContent() {
+                heroTitle.classList.remove("fade-in-logo");
+                heroParagraph.classList.remove("fade-in-logo");
+                heroMediaImage.classList.remove("hero-media-image");
+                heroMediaIllustrationImage.classList.remove("hero-media-illustration-image");
+                headerIllustrationImage.classList.remove("header-illustration-image");
+                void heroTitle.offsetWidth; // trigger reflow to restart animation
+                void heroParagraph.offsetWidth; // trigger reflow to restart animation
+
+                heroTitle.textContent = titles[currentIndex];
+                heroParagraph.textContent = paragraphs[currentIndex];
+                heroMediaImage.src = images[currentIndex];
+
+                heroTitle.classList.add("fade-in-logo");
+                heroParagraph.classList.add("fade-in-logo");
+                heroMediaImage.classList.add("hero-media-image");
+                heroMediaIllustrationImage.classList.add("hero-media-illustration-image");
+                headerIllustrationImage.classList.add("header-illustration-image");
+
+                currentIndex = (currentIndex + 1) % titles.length;
+                setTimeout(updateContent, 3500);
+            }
+
+            updateContent();
+        });
+    </script>
 </body>
 </html>
