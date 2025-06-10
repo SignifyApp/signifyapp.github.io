@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo-light.png') }}"/>
+    <script src="{{ url_for('static', filename='scrollreveal.min.js') }}"></script>
+</head>
+
+<body class="is-boxed has-animations lights-off">
+    <!-- Join Meeting Modal -->
+    <div id="joinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('joinModal')">&times;</span>
+            <h2 class="modal-title">Join a Meeting</h2>
+            <input type="text" id="meetingLink" class="modal-input" placeholder="Enter meeting link or ID">
+            <button class="modal-button" onclick="joinMeeting()">Join Meeting</button>
+        </div>
+    </div>
+    
+    <!-- Create Meeting Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createModal')">&times;</span>
+            <h2 class="modal-title">Start a New Meeting</h2>
+            <input type="text" id="meetingName" class="modal-input" placeholder="Meeting name (optional)">
+            <button class="modal-button" onclick="startMeeting()">Start Meeting</button>
+        </div>
+    </div>
+
+    <div class="body-wrap boxed-container">
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h2 class="pb-20">
+                                <a href="#">
+                                    <img class="header-logo-image asset-light" src="{{ url_for('static', filename='logo-light.png') }}" alt="Logo">
+                                    <img class="header-logo-image asset-dark" src="{{ url_for('static', filename='logo-dark.png') }}" alt="Logo">
+                                </a>
+                            </h2>
+                            <h1 class="hero-title mt-0">Inclusive Virtual Classroom</h1>
+                            <h3 class="hero-title mt-0" style="color: #d3e0ff !important;" id="hero-title">AI-Powered Virtual Classroom</h3>
+                            <p class="hero-paragraph" id="hero-paragraph">Empower inclusive learning with real-time AI interaction, gesture recognition, and speech assistance.</p>
+                            <div>
+                                <a class="button button-shadow" href="#" id="start-meeting" style="display: inline" onclick="openModal('createModal')"><span class="button-icon"></span>&nbsp;Start Session</a>
+                                <a class="button button-primary" href="#" id="join-meeting" style="display: inline" onclick="openModal('joinModal')">Join Session</a>
+                            </div>
+                            <p>&nbsp;</p>
+                        </div>
+                        
+                        <div class="hero-media pt-50" id="hero-media">
+                            <div class="header-illustration">
+                                <img class="header-illustration-image asset-light" src="{{ url_for('static', filename='header-illustration-light.svg') }}" alt="Header illustration">
+                                <img class="header-illustration-image asset-dark" src="{{ url_for('static', filename='header-illustration-dark.svg') }}" id="header-illustration-image" alt="Header illustration">
+                            </div>
+                            <div class="hero-media-illustration">
+                                <img class="hero-media-illustration-image asset-light" src="{{ url_for('static', filename='hero-media-illustration-light.svg') }}" alt="Hero media illustration">
+                                <img class="hero-media-illustration-image asset-dark" src="{{ url_for('static', filename='hero-media-illustration-dark.svg') }}" id="hero-media-illustration-image" alt="Hero media illustration">
+                            </div>
+                            <div class="hero-media-container">
+                                <img class="hero-media-image asset-light" src="{{ url_for('static', filename='hero-media-light.svg') }}" alt="Hero media">
+                                <img class="hero-media-image asset-dark" id="hero-media-image" src="{{ url_for('static', filename='hero-media-dark.svg') }}" alt="Hero media" style="width: 530px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.min.js') }}"></script>
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (document.body.classList.contains('lights-off')) {
+                modal.classList.add('modal-dark');
+            }
+            modal.style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function joinMeeting() {
+            const meetingLink = document.getElementById('meetingLink').value.trim();
+            if (meetingLink) {
+                // Here you would typically validate the meeting link and redirect
+                // For now, we'll just log it and close the modal
+                console.log('Joining meeting with link:', meetingLink);
+                closeModal('joinModal');
+                // Redirect to meeting page with the link as parameter
+                window.location.href = "{{ url_for('index') }}?meeting=" + encodeURIComponent(meetingLink);
+            } else {
+                alert('Please enter a valid meeting link');
+            }
+        }
+        
+        function startMeeting() {
+            const meetingName = document.getElementById('meetingName').value.trim();
+            console.log('Starting new meeting with name:', meetingName);
+            closeModal('createModal');
+            // Redirect to meeting page with a new meeting parameter
+            window.location.href = "{{ url_for('index') }}?newmeeting=" + encodeURIComponent(meetingName || 'New Meeting');
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Content slider
+        window.addEventListener("load", function() {
+            const heroTitle = document.getElementById("hero-title");
+            const heroParagraph = document.getElementById("hero-paragraph");
+            const heroMediaImage = document.getElementById("hero-media-image");
+            const heroMediaIllustrationImage = document.getElementById("hero-media-illustration-image");
+            const headerIllustrationImage = document.getElementById("header-illustration-image");
+
+            const titles = [
+                "AI-Powered Virtual Classroom",
+                "Sign Language Translation",
+                "Speech Assistant",
+                "Auto Text Reader"
+            ];
+           const paragraphs = [
+                "Increase your audience reach by making your lessons accessible to speech and hearing-impaired students with real-time AI support.",
+                "Communicate seamlessly as we instantly convert sign language into speech and text for everyone to follow.",
+                "Speak freely and confidently with real-time transcription that ensures smooth and inclusive conversations.",
+                "Listen to lessons and messages anytime-our text-to-speech feature reads content aloud to support your diverse learning needs."
+            ];
+
+            const images = [
+                "{{ url_for('static', filename='sliderr0.jpg') }}",
+                "{{ url_for('static', filename='sliderr1.jpg') }}",
+                "{{ url_for('static', filename='sliderr2.jpg') }}",
+                "{{ url_for('static', filename='sliderr3.jpg') }}"
+            ];
+            let currentIndex = 0;
+
+            function updateContent() {
+                heroTitle.classList.remove("fade-in-logo");
+                heroParagraph.classList.remove("fade-in-logo");
+                heroMediaImage.classList.remove("hero-media-image");
+                heroMediaIllustrationImage.classList.remove("hero-media-illustration-image");
+                headerIllustrationImage.classList.remove("header-illustration-image");
+                void heroTitle.offsetWidth; // trigger reflow to restart animation
+                void heroParagraph.offsetWidth; // trigger reflow to restart animation
+
+                heroTitle.textContent = titles[currentIndex];
+                heroParagraph.textContent = paragraphs[currentIndex];
+                heroMediaImage.src = images[currentIndex];
+
+                heroTitle.classList.add("fade-in-logo");
+                heroParagraph.classList.add("fade-in-logo");
+                heroMediaImage.classList.add("hero-media-image");
+                heroMediaIllustrationImage.classList.add("hero-media-illustration-image");
+                headerIllustrationImage.classList.add("header-illustration-image");
+
+                currentIndex = (currentIndex + 1) % titles.length;
+                setTimeout(updateContent, 4000);
+            }
+
+            updateContent();
+        });
+    </script>
+</body>
+</html>

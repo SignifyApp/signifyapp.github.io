@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link href="{{ url_for('static', filename='font.css') }}" rel="stylesheet"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo-light.png') }}"/>
+  <title>Signify-Interpreter Interface</title>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo-dark.png') }}" class="logo-des" alt="icon"></a>
+    <button id="video-btn" class="active"><img src="{{ url_for('static', filename='video.png') }}" alt="video"></button>
+    <button id="record-btn"><img src="{{ url_for('static', filename='record.png') }}" alt="voice"></button>
+    <button id="text-btn"><img src="{{ url_for('static', filename='text.png') }}" alt="text"></button>
+  </div>
+  <div class="main-content active" id="video-content">
+    <div class="header">
+      <a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo-dark.png') }}" class="logo-des" alt="icon"></a>
+      <div class="text-holder">
+        <h1>AI Powered Sign Language Translator</h1>
+      </div>
+    </div>
+    <div class="video-section">
+      <div class="video-main">
+        <img id="video-feed" src="" width="640" height="415" style="display: none;">
+        <img id="placeholder-image" src="{{ url_for('static', filename='video-default.png') }}" alt="video" width="640" height="415">
+        <img id="placeholder-image-mobile" src="{{ url_for('static', filename='video-default-mobile.png') }}" alt="video" width="640" height="415">
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+        </div>
+        <div class="video-controls">
+          <button class="start" id="start-btn">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns=""><path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#fff"/></svg>
+          </button>
+          <button class="stop" id="stop-btn">
+            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns=""><path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" fill="#fff"/></svg></button>
+        </div>
+      </div>
+      <div class="chat-section main">
+        <div class="chat-header">
+          <h2>Text Translations</h2>
+        </div>
+        <div class="chat-messages">
+          <div class="message" id="predicted-character">
+            <!-- Translated Text Contents -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-content" id="record-content">
+    <div class="header">
+      <a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo-dark.png') }}" class="logo-des" alt="icon"></a>
+      <div class="text-holder">
+        <h1>Speech Assistant</h1>
+      </div>
+    </div>
+    <div class="video-section">
+      <div class="video-main" style="display: block !important; text-align: center; align-content: center;">
+        <button class="read" id="record">
+            <svg fill="#c1c5c4" width="50px" height="50px" viewBox="0 0 50 50"><path d="M25 0C18.921875 0 14 4.785156 14 10.71875L14 11L21.5 11C22.050781 11 22.5 11.449219 22.5 12C22.5 12.550781 22.050781 13 21.5 13L14 13L14 15L21.5 15C22.050781 15 22.5 15.449219 22.5 16C22.5 16.550781 22.050781 17 21.5 17L14 17L14 19L21.5 19C22.050781 19 22.5 19.449219 22.5 20C22.5 20.550781 22.050781 21 21.5 21L14 21L14 23.28125C14 29.214844 18.921875 34 25 34C31.078125 34 36 29.214844 36 23.28125L36 21L28.5 21C27.945313 21 27.5 20.550781 27.5 20C27.5 19.449219 27.945313 19 28.5 19L36 19L36 17L28.5 17C27.945313 17 27.5 16.550781 27.5 16C27.5 15.449219 27.945313 15 28.5 15L36 15L36 13L28.5 13C27.945313 13 27.5 12.550781 27.5 12C27.5 11.449219 27.945313 11 28.5 11L36 11L36 10.71875C36 4.785156 31.078125 0 25 0 Z M 9.8125 17.125C9.402344 17.210938 9.113281 17.582031 9.125 18L9.125 23C9.125 30.714844 14.6875 37.183594 22 38.59375L22 44L28 44L28 38.59375C35.3125 37.183594 40.875 30.714844 40.875 23L40.875 18C40.875 17.515625 40.484375 17.125 40 17.125C39.515625 17.125 39.125 17.515625 39.125 18L39.125 23C39.125 30.800781 32.800781 37.125 25 37.125C17.199219 37.125 10.875 30.800781 10.875 23L10.875 18C10.878906 17.75 10.773438 17.511719 10.589844 17.34375C10.402344 17.175781 10.15625 17.09375 9.90625 17.125C9.875 17.125 9.84375 17.125 9.8125 17.125 Z M 15.5 46C13.585938 46 12.03125 47.5625 12.03125 49.46875L12 50L37.875 49.9375L37.90625 49.46875C37.90625 47.5625 36.351563 46 34.4375 46Z"/></svg>
+          </button>
+          <span class="status" id="status">Press the button to start recording.</span>
+      </div>
+      <div class="chat-section main2">
+        <div class="chat-header main2-liner">
+          <h2>Text Translations</h2>
+        </div>
+        <div class="chat-messages">
+          <div class="message" id="translation-box">
+            <!-- Translated texts will show here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="main-content" id="text-content">
+        <div class="header">
+          <a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo-dark.png') }}" class="logo-des" alt="icon"></a>
+          <div class="text-holder">
+            <h1>Auto Reader</h1>
+          </div>
+        </div>
+        <div class="video-section">
+          <div class="video-main">
+            <div class="text-controls">
+              <button class="read" id="read-card">
+                  <svg fill="#c1c5c4" width="50px" height="50px" viewBox="0 0 56 56" xmlns=""><path d="M 48.1605 48.9342 C 48.8765 49.4181 49.8252 49.2245 50.3865 48.4309 C 53.9286 43.3593 56.0000 36.8360 56.0000 29.9255 C 56.0000 23.0151 53.9096 16.4724 50.3865 11.4008 C 49.8252 10.6072 48.8765 10.4136 48.1605 10.9169 C 47.4248 11.4202 47.3086 12.3880 47.8700 13.2010 C 50.9863 17.7887 52.9221 23.6732 52.9221 29.9255 C 52.9221 36.1779 51.0446 42.1398 47.8700 46.6500 C 47.3086 47.4437 47.4248 48.4115 48.1605 48.9342 Z M 21.6412 47.5985 C 22.9575 47.5985 23.9060 46.6307 23.9060 45.3338 L 23.9060 14.4592 C 23.9060 13.1623 22.9575 12.0783 21.6025 12.0783 C 20.6540 12.0783 20.0152 12.5042 18.9893 13.4720 L 10.4528 21.5439 C 10.3173 21.6601 10.1431 21.7181 9.9495 21.7181 L 4.2005 21.7181 C 1.4711 21.7181 0 23.2086 0 26.1122 L 0 33.6227 C 0 36.5263 1.4711 38.0168 4.2005 38.0168 L 9.9495 38.0168 C 10.1431 38.0168 10.3173 38.0748 10.4528 38.1910 L 18.9893 46.3403 C 19.9184 47.2114 20.6927 47.5985 21.6412 47.5985 Z M 40.3595 43.6497 C 41.1143 44.1530 42.0436 43.9594 42.5855 43.1851 C 45.1405 39.6234 46.6117 34.8809 46.6117 29.9255 C 46.6117 24.9508 45.1599 20.2083 42.5855 16.6466 C 42.0242 15.8917 41.1143 15.6981 40.3595 16.2014 C 39.6238 16.7047 39.5076 17.6532 40.0884 18.4855 C 42.1982 21.5826 43.4953 25.6476 43.4953 29.9255 C 43.4953 34.2034 42.2370 38.3072 40.0690 41.3656 C 39.5270 42.1979 39.6238 43.1464 40.3595 43.6497 Z M 32.6360 38.4233 C 33.2941 38.8878 34.2426 38.7330 34.8039 37.9781 C 36.3139 35.9456 37.2238 32.9646 37.2238 29.9255 C 37.2238 26.8865 36.2945 23.9249 34.8039 21.8536 C 34.2426 21.0987 33.3135 20.9439 32.6360 21.4084 C 31.7843 21.9698 31.6875 22.9570 32.3069 23.8087 C 33.4296 25.3185 34.1071 27.6221 34.1071 29.9255 C 34.1071 32.2290 33.3909 34.5325 32.2876 36.0617 C 31.7068 36.8941 31.8037 37.8426 32.6360 38.4233 Z"/></svg>
+              </button>
+          </div>
+          </div>
+          <div class="chat-section">
+            <div class="chat-header chat">
+              <h2>Text Contents</h2>
+            </div>
+            <div class="chat-messages chatput">
+              <textarea id="chat-input" placeholder="Type text here..."></textarea>
+            </div>
+            <div class="chat-input">
+              <button id="read-content">Read Content</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="{{ url_for('static', filename='second.js') }}"></script>
+      <script>
+        
+        let lastCharacter = '';
+        var cam_init_count = 0;
+        
+        function fetchCharacter() {
+            fetch('/get_character')
+                .then(response => response.json())
+                .then(data => {
+                    var predictedCharacterElement = document.getElementById('predicted-character');
+                    var character = data.character;
+                    var characterDiv = document.createElement('div');
+                    characterDiv.className = 'text';
+                    characterDiv.textContent = character;
+                    if (character && character !== lastCharacter) {
+                        // Append the new character inside a div with class "text"
+                        predictedCharacterElement.insertBefore(characterDiv, predictedCharacterElement.firstChild);
+                        const msg = new SpeechSynthesisUtterance(character);
+                        window.speechSynthesis.speak(msg);
+                    }
+                    lastCharacter = character;
+                });
+        }
+
+        setInterval(fetchCharacter, 1000); // Fetch character every second
+
+        const videoFeed = document.getElementById('video-feed');
+        const placeholderImage = document.getElementById('placeholder-image');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+
+        startBtn.addEventListener('click', () => {
+            videoFeed.src = "{{ url_for('video_feed') }}?" + new Date().getTime();
+            placeholderImage.style.display = 'none';
+            videoFeed.style.display = 'block';
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            cam_init_count += 1
+        });
+
+        stopBtn.addEventListener('click', () => {
+            videoFeed.src = '';
+            placeholderImage.style.display = 'block';
+            videoFeed.style.display = 'none';
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            fetch('/stop_feed');
+            cam_init_count +=1
+        });
+
+
+      </script>
+    </body>
+</html>
+
