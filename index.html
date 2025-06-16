@@ -4,34 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Signify</title>
-    <link rel="stylesheet" href="font.css">
+    <title>Signify - AI Powered</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="logo-light.png"/>
     <script src="scrollreveal.min.js"></script>
 </head>
-
 <body class="is-boxed has-animations lights-off">
-    <!-- Join Meeting Modal -->
-    <div id="joinModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('joinModal')">&times;</span>
-            <h2 class="modal-title">Join a Meeting</h2>
-            <input type="text" id="meetingLink" class="modal-input" placeholder="Enter meeting link or ID">
-            <button class="modal-button" onclick="joinMeeting()">Join Meeting</button>
-        </div>
-    </div>
-    
-    <!-- Create Meeting Modal -->
-    <div id="createModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('createModal')">&times;</span>
-            <h2 class="modal-title">Start a New Meeting</h2>
-            <input type="text" id="meetingName" class="modal-input" placeholder="Meeting name (optional)">
-            <button class="modal-button" onclick="startMeeting()">Start Meeting</button>
-        </div>
-    </div>
-
     <div class="body-wrap boxed-container">
         <main>
             <section class="hero">
@@ -44,12 +22,10 @@
                                     <img class="header-logo-image asset-dark" src="logo-dark.png" alt="Logo">
                                 </a>
                             </h2>
-                            <h1 class="hero-title mt-0">Inclusive Virtual Classroom</h1>
-                            <h3 class="hero-title mt-0" style="color: #d3e0ff !important;" id="hero-title">AI-Powered Virtual Classroom</h3>
+                            <h1 class="hero-title mt-0" id="hero-title">AI-Powered Virtual Classroom</h1>
                             <p class="hero-paragraph" id="hero-paragraph">Empower inclusive learning with real-time AI interaction, gesture recognition, and speech assistance.</p>
                             <div>
-                                <a class="button button-shadow" href="#" id="start-meeting" style="display: inline" onclick="openModal('createModal')"><span class="button-icon"></span>&nbsp;Start Session</a>
-                                <a class="button button-primary" href="#" id="join-meeting" style="display: inline" onclick="openModal('joinModal')">Join Session</a>
+                                <a class="button button-primary" href="test.html" id="start-translation">Start Session</a>
                             </div>
                             <p>&nbsp;</p>
                         </div>
@@ -74,73 +50,8 @@
         </main>
     </div>
 
-
-    <!-- Add this to your index.html -->
-    <div class="auth-forms">
-        <!-- Login Form -->
-        <form id="loginForm" action="/auth/login" method="POST">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        
-        <!-- Signup Form -->
-        <form id="signupForm" action="/auth/signup" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
-        </form>
-        
-        <!-- Google Login Button -->
-        <a href="/auth/google-login" class="google-btn">
-            <img src="google-icon.png" alt="Google">
-            Continue with Google
-        </a>
-    </div>
-
-
     <script src="main.min.js"></script>
     <script>
-        // Modal functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (document.body.classList.contains('lights-off')) {
-                modal.classList.add('modal-dark');
-            }
-            modal.style.display = 'block';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-        
-        function joinMeeting() {
-            const meetingLink = document.getElementById('meetingLink').value.trim();
-            if (meetingLink) {
-                console.log('Joining meeting with link:', meetingLink);
-                closeModal('joinModal');
-                window.location.href = "/index?meeting=" + encodeURIComponent(meetingLink);
-            } else {
-                alert('Please enter a valid meeting link');
-            }
-        }
-        
-        function startMeeting() {
-            const meetingName = document.getElementById('meetingName').value.trim();
-            console.log('Starting new meeting with name:', meetingName);
-            closeModal('createModal');
-            window.location.href = "/index?newmeeting=" + encodeURIComponent(meetingName || 'New Meeting');
-        }
-        
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = 'none';
-            }
-        }
-
-        // Content slider
         window.addEventListener("load", function() {
             const heroTitle = document.getElementById("hero-title");
             const heroParagraph = document.getElementById("hero-paragraph");
@@ -148,25 +59,14 @@
             const heroMediaIllustrationImage = document.getElementById("hero-media-illustration-image");
             const headerIllustrationImage = document.getElementById("header-illustration-image");
 
-            const titles = [
-                "AI-Powered Virtual Classroom",
-                "Sign Language Translation",
-                "Speech Assistant",
-                "Auto Text Reader"
+            const titles = ["AI-Powered Virtual Classroom", "Sign Language Translation", "Speech Assistant", "Auto Text Reader"];
+            const paragraphs = [
+                "Empower inclusive learning with real-time AI interaction, gesture recognition, and speech assistance.",
+                "Experience seamless communication with our real-time AI Sign Language Translation service.",
+                "Instantly convert spoken words into text with our advanced Speech-to-Text Translation.",
+                "Turn text into natural speech effortlessly with our Text-to-Speech Translation."
             ];
-           const paragraphs = [
-                "Increase your audience reach by making your lessons accessible to speech and hearing-impaired students with real-time AI support.",
-                "Communicate seamlessly as we instantly convert sign language into speech and text for everyone to follow.",
-                "Speak freely and confidently with real-time transcription that ensures smooth and inclusive conversations.",
-                "Listen to lessons and messages anytime-our text-to-speech feature reads content aloud to support your diverse learning needs."
-            ];
-
-            const images = [
-                "sliderr0.jpg",
-                "sliderr1.jpg",
-                "sliderr2.jpg",
-                "sliderr3.jpg"
-            ];
+            const images = ["sliderr0.jpg", "sliderr1.jpg", "sliderr2.jpg", "sliderr3.jpg"];
             let currentIndex = 0;
 
             function updateContent() {
@@ -175,8 +75,8 @@
                 heroMediaImage.classList.remove("hero-media-image");
                 heroMediaIllustrationImage.classList.remove("hero-media-illustration-image");
                 headerIllustrationImage.classList.remove("header-illustration-image");
-                void heroTitle.offsetWidth;
-                void heroParagraph.offsetWidth;
+                void heroTitle.offsetWidth; // trigger reflow to restart animation
+                void heroParagraph.offsetWidth; // trigger reflow to restart animation
 
                 heroTitle.textContent = titles[currentIndex];
                 heroParagraph.textContent = paragraphs[currentIndex];
@@ -189,7 +89,7 @@
                 headerIllustrationImage.classList.add("header-illustration-image");
 
                 currentIndex = (currentIndex + 1) % titles.length;
-                setTimeout(updateContent, 4000);
+                setTimeout(updateContent, 3500);
             }
 
             updateContent();
